@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
-use Illuminate\Http\Request;
+use App\Post; //Postモデルを使う
+use App\Http\Requests\PostRequest; //PostRequestをuseする
 
 class PostController extends Controller
 {
@@ -17,6 +17,7 @@ class PostController extends Controller
     {
         return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
     }
+<<<<<<< HEAD
 /**
  * 特定IDのpostを表示する
  *
@@ -26,5 +27,18 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts/show')->with(['post' => $post]);
+=======
+    
+    public function create()
+    {
+        return view('posts/create');
+    }
+    
+    public function store(Post $post, PostRequest $request) // 引数をRequestからPostRequestにする
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
+>>>>>>> dev_basis04
     }
 }
