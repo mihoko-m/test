@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post; //Postモデルを使う
-use App\Http\Requests\PostRequest; //PostRequestをuseする
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -28,7 +28,7 @@ class PostController extends Controller
         return view('posts/create');
     }
     
-    public function store(Post $post, PostRequest $request) // 引数をRequestからPostRequestにする
+    public function store(Request $request, Post $post)
     {
         $input = $request['post'];
         $post->fill($input)->save();
