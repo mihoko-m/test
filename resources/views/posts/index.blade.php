@@ -18,6 +18,11 @@
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
+                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return Check()">delete</button> 
+                    </form>
                 </div>
             @endforeach
         </div>
@@ -25,5 +30,14 @@
         <div class='paginate'>
             {{ $posts->links() }}
         </div>
+        <script>
+            function Check(){
+                if(confirm("削除しますが本当によろしいですか？")){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
     </body>
 </html>

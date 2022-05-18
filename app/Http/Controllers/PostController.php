@@ -13,6 +13,12 @@ class PostController extends Controller
  * @param Post Postモデル
  * @return array Postモデルリスト
  */
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
+    }
+    
     public function index(Post $post)
     {
         return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
@@ -46,4 +52,5 @@ class PostController extends Controller
         $post->fill($input)->save();
         return redirect('/posts/' . $post->id);
     }
+    
 }
