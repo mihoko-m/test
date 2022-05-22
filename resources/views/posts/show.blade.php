@@ -16,6 +16,7 @@
         <h1 class="title">
             {{ $post->title }}
         </h1>
+        <small>{{ $post->user->name }}</small>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
         <div class="content">
                 <div class='content__post'>

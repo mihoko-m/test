@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     </head>
     <body>
-        <p>{{Auth::user()->name}}</p>
+        <a href="/user">{{Auth::user()->name}}</a>
         <h1>Blog Name</h1>
         <div class='posts'>
             @foreach ($posts as $post)
@@ -20,6 +20,7 @@
                     <h2 class='title'>
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h2>
+                    <p><small>{{ $post->user->name }}</small></p>
                     <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                     <p class='body'>{{ $post->body }}</p>
                     <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
