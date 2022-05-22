@@ -30,6 +30,15 @@
                 </div>
             @endforeach
         </div>
+        <div>
+        @foreach($questions as $question)
+            <div>
+              <a href="https://teratail.com/questions/{{ $question['id'] }}">
+                {{ $question['title'] }}
+              </a>
+             </div>
+        @endforeach
+        </div>
         <a href="/posts/create">create</a>
         <div class='paginate'>
             {{ $posts->links() }}
